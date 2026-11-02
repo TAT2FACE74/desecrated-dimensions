@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Desecrated Dimensions — Tat2Face</title>
+    <meta
+      name="description"
+      content="Desecrated Dimensions by Tat2Face — a cinematic, immersive album experience with full album playback and synced lyrics."
+    />
+    <meta property="og:title" content="Desecrated Dimensions — Tat2Face" />
+    <meta
+      property="og:description"
+      content="Step inside Desecrated Dimensions: an interactive, cinematic album experience."
+    />
+    <meta property="og:type" content="music.album" />
+    <meta property="og:image" content="images/cover.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="images/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- SPLASH -->
+    <div class="splash" id="splash" aria-hidden="true">
+      <img class="splash-mark" src="images/icon.png" alt="" />
+      <div class="splash-led">DESECRATED DIMENSIONS</div>
+    </div>
+
+    <main class="column">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="steel-frame cover-frame">
+          <span class="screw tl"></span><span class="screw tr"></span>
+          <span class="screw bl"></span><span class="screw br"></span>
+          <span class="led-dot tl"></span><span class="led-dot tr"></span>
+          <span class="led-dot bl"></span><span class="led-dot br"></span>
+          <img
+            class="hero-art"
+            src="images/cover.jpg"
+            alt="Desecrated Dimensions album artwork"
+          />
+        </div>
+        <h1 class="album-title">Desecrated Dimensions</h1>
+        <p class="artist">TAT2FACE</p>
+        <p class="led-readout">13 TRACKS // FULL ALBUM // SYNCED LYRICS</p>
+        <div class="cta">
+          <button class="btn btn-primary" id="playAlbumBtn">▶&nbsp; Play Album</button>
+          <a class="btn" href="#tracks">Track List</a>
+          <a class="btn" href="#merch">Merch</a>
+        </div>
+      </section>
+
+      <!-- TRACKS -->
+      <section id="tracks" class="section">
+        <h2 class="section-title">Track List</h2>
+        <div class="ledstrip" aria-hidden="true"></div>
+        <ol class="tracklist" id="tracklist"></ol>
+      </section>
+
+      <!-- LYRICS -->
+      <section id="lyrics" class="section">
+        <h2 class="section-title">Lyrics</h2>
+        <div class="ledstrip" aria-hidden="true"></div>
+        <div class="steel-frame lyric-frame">
+          <span class="screw tl"></span><span class="screw tr"></span>
+          <span class="screw bl"></span><span class="screw br"></span>
+          <p class="lyric-warning">
+            ⚠ Content warning: explicit &amp; violent themes. Strong language shown as ****.
+          </p>
+          <h3 class="lyric-title" id="lyTitle">Select a track</h3>
+          <div class="lyric-scroll" id="lyScroll">
+            <div class="lyric-lines" id="lyLines">
+              <p class="lyric-idle">
+                Press play, or tap LYRICS on any track — the words light up and
+                roll with the song as it plays. Tap any line to jump to it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MERCH -->
+      <section id="merch" class="section">
+        <h2 class="section-title">Merch</h2>
+        <div class="ledstrip" aria-hidden="true"></div>
+        <div class="merch-grid">
+          <article class="merch-card steel-frame">
+            <span class="screw tl"></span><span class="screw tr"></span>
+            <span class="screw bl"></span><span class="screw br"></span>
+            <div class="merch-img merch-pending" id="merchTeeImg">
+              <img class="merch-watermark" src="images/icon.png" alt="" />
+              <span class="merch-badge">COMING SOON</span>
+            </div>
+            <h3 class="merch-name">Tat2Face Tee</h3>
+            <p class="merch-price" id="merchTeePrice">—</p>
+            <button class="btn merch-btn" id="merchTeeBtn" disabled>Link Inbound</button>
+          </article>
+          <article class="merch-card steel-frame">
+            <span class="screw tl"></span><span class="screw tr"></span>
+            <span class="screw bl"></span><span class="screw br"></span>
+            <div class="merch-img merch-pending" id="merchHoodieImg">
+              <img class="merch-watermark" src="images/icon.png" alt="" />
+              <span class="merch-badge">COMING SOON</span>
+            </div>
+            <h3 class="merch-name">Tat2Face Hoodie</h3>
+            <p class="merch-price" id="merchHoodiePrice">—</p>
+            <button class="btn merch-btn" id="merchHoodieBtn" disabled>Link Inbound</button>
+          </article>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>© <span id="year"></span> Tat2Face · Desecrated Dimensions</p>
+      </footer>
+    </main>
+
+    <!-- PLAYER MACHINE -->
+    <div class="player steel-frame" id="player">
+      <span class="screw tl"></span><span class="screw tr"></span>
+      <div class="seek-row">
+        <span class="time" id="curTime">0:00</span>
+        <input id="seek" class="seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek" />
+        <span class="time" id="durTime">0:00</span>
+      </div>
+      <div class="deck">
+        <img class="player-art" id="playerArt" src="images/cover.jpg" alt="Now playing artwork" />
+        <div class="player-meta">
+          <span class="now-title" id="nowTitle">Nothing playing</span>
+          <span class="now-artist">Tat2Face · Desecrated Dimensions</span>
+          <span class="now-status"><span class="status-led" id="statusLed"></span><span id="statusText">STANDBY</span></span>
+        </div>
+        <canvas id="eq" height="72" aria-hidden="true"></canvas>
+      </div>
+      <div class="controls">
+        <button class="ctrl" id="shuffleBtn" title="Shuffle" aria-label="Shuffle">⤨</button>
+        <button class="ctrl" id="prevBtn" title="Previous track" aria-label="Previous track">⏮</button>
+        <button class="ctrl ctrl-play" id="playBtn" title="Play / Pause" aria-label="Play">▶</button>
+        <button class="ctrl" id="nextBtn" title="Next track" aria-label="Next track">⏭</button>
+        <button class="ctrl" id="repeatBtn" title="Repeat: off / all / one" aria-label="Repeat">↻</button>
+        <div class="volume">
+          <span class="vol-icon" aria-hidden="true">🔊</span>
+          <input id="volume" class="vol" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volume" />
+        </div>
+      </div>
+      <audio id="audio" preload="metadata"></audio>
+    </div>
+
+    <script src="lyrics.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
